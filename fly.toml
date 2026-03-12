@@ -1,0 +1,34 @@
+# fly.toml para Inazuma VR Bot
+# Configuración de Fly.io
+
+app = "inazuma-vr-bot-prod"  # App de producción
+primary_region = "iad"  # US East (Virginia) - cambia según tu región
+
+[build]
+
+[env]
+  # Las variables de entorno se configuran con: fly secrets set KEY=value
+  PYTHONUNBUFFERED = "1"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+# Configuración para mantener el bot siempre activo
+[processes]
+  app = "python3 bot.py"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+# Configuración de escalado (mantener siempre 1 máquina activa)
+[deploy]
+  strategy = "immediate"
+
+

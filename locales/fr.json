@@ -1,0 +1,704 @@
+{
+  "common": {
+    "error": "❌ Erreur",
+    "success": "✅",
+    "warning": "⚠️",
+    "info": "💡",
+    "loading": "⏳",
+    "anonymous": "Anonyme",
+    "today": "aujourd'hui",
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "yes": "Oui",
+    "no": "Non",
+    "accept": "Accepter",
+    "reject": "Rejeter",
+    "delete": "Supprimer",
+    "close": "Fermer"
+  },
+  "commands": {
+    "help": {
+      "name": "help",
+      "description": "Affiche toutes les commandes disponibles du bot"
+    },
+    "profile": {
+      "name": "profile",
+      "description": "Affiche votre profil ou celui d'un autre joueur",
+      "user": "Utilisateur (optionnel, affiche votre profil si non spécifié)"
+    },
+    "leaderboard": {
+      "name": "leaderboard",
+      "description": "Affiche le classement des joueurs ou des équipes",
+      "category": "Catégorie : joueurs ou équipes",
+      "type": "Type de classement",
+      "page": "Page du classement (1-10)"
+    },
+    "ranks": {
+      "name": "ranks",
+      "description": "Affiche toutes les ligues et l'ELO nécessaire pour les atteindre"
+    },
+    "matchmaking": {
+      "name": "matchmaking",
+      "description": "Recherche une partie 1v1 de manière anonyme"
+    },
+    "cancel_matchmaking": {
+      "name": "cancel-matchmaking",
+      "description": "Annule toutes vos recherches actives"
+    },
+    "score": {
+      "name": "score",
+      "description": "Signale le résultat d'une partie",
+      "myscore": "Votre score",
+      "opponentscore": "Score de l'adversaire",
+      "opponent": "Utilisateur adversaire",
+      "game": "Type de partie (optionnel)"
+    },
+    "team_create": {
+      "name": "team-create",
+      "description": "Crée une équipe professionnelle",
+      "name_param": "Nom exact de l'équipe",
+      "tag": "Préfixe/Tag de l'équipe (ex: INAZ)",
+      "logo": "Logo de l'équipe au format PNG (obligatoire)"
+    },
+    "team": {
+      "name": "team",
+      "description": "Commandes de gestion d'équipe",
+      "action": "Action à effectuer",
+      "member": "Membre (pour inviter/expulser/changer le rôle)",
+      "role": "Rôle à attribuer (leader, co-leader, staff, member)"
+    },
+    "tournament": {
+      "name": "tournament",
+      "description": "Commandes de gestion de tournoi",
+      "action": "Action à effectuer",
+      "name_param": "Nom du tournoi (pour create)",
+      "url": "URL unique du tournoi (pour create, sans espaces ni caractères spéciaux)",
+      "tournament_type": "Type de tournoi",
+      "tournament_id": "ID du tournoi sur Challonge (pour autres actions)"
+    },
+    "war": {
+      "name": "war",
+      "description": "Commandes de Guerre d'Équipe (Interclan)",
+      "action": "Action à effectuer",
+      "team_name": "Nom de l'équipe rivale (pour challenge)",
+      "war_type": "Type de guerre : amical ou compétition"
+    },
+    "language": {
+      "name": "language",
+      "description": "Change la langue du bot",
+      "lang": "Langue à sélectionner"
+    },
+    "sync": {
+      "name": "sync",
+      "description": "Synchronise les commandes du bot (administrateurs uniquement)",
+      "global_sync": "Synchroniser globalement (par défaut : ce serveur uniquement)",
+      "clear_global": "Effacer d'abord les commandes globales (utile pour supprimer les doublons)"
+    },
+    "server_id": {
+      "name": "server-id",
+      "description": "Affiche l'ID du serveur actuel"
+    }
+  },
+  "matchmaking": {
+    "title": "🔍 Matchmaking IEVR",
+    "description": "Une personne anonyme cherche une partie {role_mention}.",
+    "description_no_role": "Une personne anonyme cherche une partie.",
+    "mode": "Mode",
+    "mode_value": "1VS1",
+    "hint": "Indice",
+    "footer": "Anonyme • aujourd'hui",
+    "accepted": {
+      "title": "✅ Partie Acceptée",
+      "content": "ton match a été accepté par {accepter}",
+      "random_selection": "Sélection aléatoire",
+      "host": "L'hôte sera {host}.",
+      "footer": "N'oublie pas d'utiliser \"/score\" après le match pour enregistrer le résultat"
+    },
+    "cancelled": {
+      "title": "❌ Recherche Annulée",
+      "description": "Cette recherche a été annulée.",
+      "message": "Demande annulée."
+    },
+    "errors": {
+      "own_request": "Vous ne pouvez pas accepter votre propre demande.",
+      "not_active": "Cette demande n'est plus active.",
+      "only_creator": "Seul le créateur peut annuler cette demande.",
+      "no_active": "Vous n'avez aucune recherche active.",
+      "cancelled_count": "Annulé {count} recherche(s) active(s).",
+      "elo_difference_too_large": "❌ La différence d'ELO est trop importante pour jouer ce match. Vous ne pouvez accepter que des matchs avec des joueurs qui sont au maximum à 3 ligues d'écart."
+    }
+  },
+  "match": {
+    "score_report": {
+      "title": "📊 Signaler le Résultat",
+      "description": "Le score de la partie d'Inazuma Eleven Victory Road est :",
+      "confirm_question": "{opponent}, Confirmez-vous ce score ?",
+      "footer": "Inazuma Eleven Victory Road"
+    },
+    "score": {
+      "cannot_report_self": "❌ Vous ne pouvez pas signaler un score contre vous-même."
+    },
+    "result": {
+      "title": "⚽ RÉSULTAT DE LA PARTIE",
+      "description": "Résultat confirmé par {confirmed_by}",
+      "score": "📊 SCORE",
+      "draw": "🤝 **ÉGALITÉ** - Aucun point attribué",
+      "elo": "🏆 ELO",
+      "new_elo": "📈 Nouveau",
+      "xp": "⭐ XP",
+      "points": "Points",
+      "elo_label": "ELO",
+      "elo_from_match": "partie",
+      "elo_from_streak": "séquence",
+      "streak": "🔥 Séquence",
+      "rank": "Rang",
+      "new_rank_reached": "[+] NOUVEAU RANG ATTEINT",
+      "winner": "Gagnant",
+      "loser": "Perdant",
+      "footer": "⚽ Inazuma Eleven Victory Road"
+    },
+    "confirm": {
+      "button_yes": "Oui",
+      "button_no": "Non",
+      "errors": {
+        "no_profile": "Vous n'avez pas de profil créé.",
+        "only_opponent": "Seul l'adversaire peut confirmer ce résultat.",
+        "already_confirmed": "Cette partie a déjà été confirmée ou annulée.",
+        "only_opponent_dispute": "Seul l'adversaire peut contester ce résultat.",
+        "disputed": "⚠️ Résultat contesté. Un administrateur examinera le cas."
+      }
+    },
+    "war_match": {
+      "title": "⚔️ Guerre d'Équipe",
+      "description": "Cette partie fait partie d'une Guerre d'Équipe (Partie #{match_number})"
+    }
+  },
+  "team": {
+    "create": {
+      "title": "✅ Équipe Créée",
+      "description": "Vous avez créé l'équipe **{name}**",
+      "prefix": "🏷️ Préfixe",
+      "your_role": "👑 Votre Rôle",
+      "leader": "Leader",
+      "logo": "🖼️ Logo",
+      "logo_configured": "✅ PNG configuré",
+      "footer": "Utilisez /team pour gérer votre équipe"
+    },
+    "errors": {
+      "name_exists": "❌ Une équipe avec ce nom existe déjà : **{name}**",
+      "tag_exists": "❌ Une équipe avec ce préfixe/tag existe déjà : **{name}** (`{tag}`)",
+      "tag_exists_simple": "❌ Une équipe avec le préfixe/tag **{tag}** existe déjà. Veuillez en choisir un autre.",
+      "tag_too_long": "❌ Le préfixe/tag de l'équipe ne peut pas dépasser 4 lettres.",
+      "already_in_team": "❌ Vous êtes déjà dans l'équipe **{name}**. Vous devez d'abord la quitter.",
+      "not_in_team": "❌ Vous n'êtes dans aucune équipe.",
+      "no_permission_invite": "❌ Vous n'avez pas la permission d'inviter des membres. Seuls le leader, co-leader et staff peuvent inviter.",
+      "team_full": "❌ L'équipe est pleine (maximum 50 membres).",
+      "already_member": "❌ {member} est déjà dans l'équipe.",
+      "invite_pending": "❌ Il y a déjà une invitation en attente pour {member}.",
+      "no_permission_kick": "❌ Vous n'avez pas la permission d'expulser des membres. Seuls le leader, co-leader et staff peuvent expulser.",
+      "no_permission_roles": "❌ Seuls le leader et co-leader peuvent changer les rôles.",
+      "leader_cannot_leave": "❌ Le leader ne peut pas quitter l'équipe. Utilisez `/team disband` pour la dissoudre ou transférez d'abord le leadership.",
+      "only_leader_disband": "❌ Seul le leader peut dissoudre l'équipe.",
+      "only_leader_transfer": "❌ Seul le leader actuel peut transférer le leadership.",
+      "already_leader": "❌ Cet utilisateur est déjà le leader de l'équipe.",
+      "cannot_change_leader": "❌ Vous ne pouvez pas changer le rôle du leader. Utilisez le transfert de leadership pour changer de leader.",
+      "only_leader_coleader": "❌ Seul le leader peut attribuer le rôle de co-leader.",
+      "cannot_kick_leader": "❌ Vous ne pouvez pas expulser le leader de l'équipe.",
+      "cannot_kick_same_rank": "❌ Vous ne pouvez pas expulser quelqu'un avec le même rang ou supérieur au vôtre.",
+      "must_mention": "❌ Vous devez mentionner un utilisateur pour {action}.",
+      "must_mention_role": "❌ Vous devez mentionner un utilisateur et spécifier un rôle.",
+      "no_profile": "❌ Cet utilisateur n'a pas de profil.",
+      "not_in_your_team": "❌ {member} n'est pas dans votre équipe."
+    },
+    "info": {
+      "title": "👥 {name}",
+      "prefix": "🏷️ Préfixe",
+      "elo": "ELO",
+      "members": "Membres",
+      "wins": "Victoires",
+      "losses": "Défaites",
+      "win_rate": "Taux de Victoire",
+      "leader": "👑 Leader",
+      "your_role": "Votre Rôle",
+      "created": "Créé le {date}"
+    },
+    "members": {
+      "title": "👥 Membres de {name}"
+    },
+    "invite": {
+      "title": "📨 Invitation Envoyée",
+      "description": "Vous avez invité {member} à rejoindre **{name}**",
+      "notification_title": "📨 Invitation d'Équipe",
+      "notification_description": "{inviter} vous a invité à rejoindre **{name}**",
+      "team": "Équipe",
+      "tag": "Tag",
+      "footer": "Utilisez les boutons pour accepter ou rejeter l'invitation",
+      "accepted": {
+        "title": "✅ Invitation Acceptée",
+        "description": "Vous avez rejoint **{name}**"
+      },
+      "rejected": {
+        "message": "❌ Vous avez rejeté l'invitation."
+      },
+      "errors": {
+        "not_for_you": "❌ Cette invitation ne vous est pas destinée.",
+        "invalid": "❌ Cette invitation n'est plus valide.",
+        "expired": "❌ Cette invitation a expiré.",
+        "team_full": "❌ L'équipe est pleine (maximum 50 membres).",
+        "already_in_team": "❌ Vous êtes déjà dans une autre équipe. Vous devez d'abord la quitter."
+      }
+    },
+    "leave": {
+      "title": "👋 Vous avez Quitté l'Équipe",
+      "description": "Vous avez quitté **{name}**"
+    },
+    "kick": {
+      "title": "👢 Membre Expulsé",
+      "description": "{member} a été expulsé de **{name}**"
+    },
+    "set_role": {
+      "title": "✅ Rôle Mis à Jour",
+      "description": "Le rôle de {member} a changé de **{old_role}** à **{role}**",
+      "transfer_title": "👑 Leadership Transféré",
+      "transfer_description": "Vous avez transféré le leadership de **{name}** à {member}"
+    },
+    "disband": {
+      "confirm_title": "⚠️ Confirmer la Dissolution de l'Équipe",
+      "confirm_description": "Êtes-vous sûr de vouloir dissoudre **{name}** (`{tag}`) ?\n\nCette action est **IRRÉVERSIBLE** et supprimera :\n• Tous les membres de l'équipe\n• Les invitations en attente\n• Les guerres d'équipe et les parties\n• Toutes les références de l'équipe\n\n**Cette action ne peut pas être annulée.**",
+      "confirm_footer": "Confirmez deux fois pour dissoudre l'équipe",
+      "final_title": "🔴 DERNIÈRE CONFIRMATION",
+      "final_description": "**ÊTES-VOUS COMPLÈTEMENT SÛR ?**\n\nVous allez dissoudre **{name}** (`{tag}`) de manière permanente.\n\nCette action **NE PEUT PAS ÊTRE ANNULÉE**.\n\nAppuyez sur 'Confirmer la Dissolution' pour procéder.",
+      "final_footer": "C'est votre dernière chance d'annuler",
+      "completed_title": "💥 Équipe Dissoute",
+      "completed_description": "L'équipe **{name}** (`{tag}`) a été complètement dissoute.\n\nSupprimé :\n• Tous les membres\n• Les invitations en attente\n• Les guerres d'équipe\n• Les références dans les parties",
+      "cancelled": "✅ Dissolution annulée. L'équipe reste active.",
+      "button_yes": "Oui, Dissoudre",
+      "button_confirm": "Confirmer la Dissolution",
+      "button_cancel": "Annuler",
+      "errors": {
+        "only_leader": "❌ Seul le leader peut dissoudre l'équipe.",
+        "not_exists": "❌ L'équipe n'existe plus."
+      }
+    },
+    "roles": {
+      "leader": "Leader",
+      "co_leader": "Co-Leader",
+      "staff": "Staff",
+      "member": "Membre"
+    }
+  },
+  "tournament": {
+    "create": {
+      "title": "✅ Tournoi Créé",
+      "description": "Vous avez créé le tournoi **{name}** sur Challonge",
+      "url": "🔗 URL",
+      "type": "Type",
+      "status": "Statut",
+      "footer": "Utilisez /tournament pour gérer le tournoi",
+      "url_adjusted": "⚠️ L'URL a été ajustée de {original} à {adjusted} (Challonge n'autorise que les lettres, chiffres et underscores).",
+      "url_taken": {
+        "title": "❌ URL Déjà Utilisée",
+        "description": "L'URL `{url}` est déjà prise sur Challonge.\n\n**Suggestions d'URL alternatives :**\n• `{suggestion1}`\n• `{suggestion2}`\n• `{suggestion3}`\n\n💡 **Astuce :** Utilisez l'une de ces URLs ou créez-en une unique avec des lettres, chiffres et underscores (_)."
+      }
+    },
+    "list": {
+      "title": "🏆 Tournois Disponibles",
+      "none": "Aucun tournoi disponible.",
+      "footer": "Utilisez les boutons pour vous inscrire ou /tournament join [id]"
+    },
+    "join": {
+      "title": "✅ Inscription Réussie",
+      "description": "Vous vous êtes inscrit au tournoi **#{id}**.",
+      "participant": "👤 Participant",
+      "participant_id": "🆔 ID du Participant",
+      "next_steps": "💡 Prochaines Étapes",
+      "next_steps_value": "• Attendez que le tournoi commence\n• Utilisez `/tournament status {id}` pour voir la progression\n• Utilisez `/tournament matches {id}` pour voir vos matchs",
+      "footer": "Inscrit par {username}",
+      "button": "✅ S'inscrire",
+      "button_already": "✅ Déjà Inscrit",
+      "button_closed": "🔒 Fermé",
+      "errors": {
+        "no_id": "❌ Vous devez fournir l'ID du tournoi. Utilisez `/tournament list` pour voir les IDs disponibles.",
+        "already_registered": "⚠️ Vous êtes déjà inscrit au tournoi **#{id}**.",
+        "not_found": "❌ Tournoi **#{id}** non trouvé. Vérifiez l'ID.",
+        "closed": "❌ Le tournoi **#{id}** est déjà fermé ou commencé. Plus d'inscriptions acceptées."
+      }
+    },
+    "start": {
+      "title": "✅ Tournoi Démarré",
+      "description": "Le tournoi **{name}** a commencé.",
+      "status": "📊 Statut",
+      "status_value": "⚔️ En Cours",
+      "participants": "👥 Participants",
+      "next_steps": "💡 Prochaines Étapes",
+      "next_steps_value": "• Utilisez `/tournament matches` pour voir les matchs\n• Les résultats peuvent être signalés sur Challonge\n• Utilisez `/tournament status` pour voir la progression",
+      "errors": {
+        "no_id": "❌ Vous devez fournir l'ID du tournoi. Utilisez `/tournament list` pour voir les IDs disponibles.",
+        "not_found": "❌ Tournoi **#{id}** non trouvé dans la base de données. Vérifiez l'ID.",
+        "no_permission": "❌ Seuls les administrateurs ou le créateur du tournoi peuvent le démarrer.",
+        "not_enough_participants": "❌ Le tournoi nécessite au moins 2 participants pour démarrer. Utilisez `/tournament participants` pour voir les participants."
+      }
+    },
+    "delete": {
+      "title": "✅ Tournoi Supprimé",
+      "description": "Le tournoi **{name}** (ID: {id}) a été supprimé avec succès de Challonge et de la base de données.",
+      "not_found_title": "⚠️ Tournoi Non Trouvé sur Challonge",
+      "not_found_description": "Le tournoi **{name}** (ID: {id}) n'a pas été trouvé sur Challonge, mais a été supprimé de la base de données locale.",
+      "footer": "Supprimé par {user}",
+      "errors": {
+        "no_id": "❌ Vous devez fournir l'ID du tournoi. Utilisez `/tournament list` pour voir les IDs disponibles.",
+        "not_found": "❌ Tournoi **#{id}** non trouvé dans la base de données. Vérifiez l'ID.",
+        "no_permission": "❌ Seuls les administrateurs ou le créateur du tournoi peuvent le supprimer."
+      }
+    },
+    "errors": {
+      "no_credentials": "❌ Erreur lors de la création du tournoi : Aucune credential Challonge configurée",
+      "create_error": "❌ Erreur lors de la création du tournoi : {error}",
+      "invalid_action": "❌ Action non valide. Utilisez `/help` pour voir les commandes disponibles."
+    },
+    "types": {
+      "single_elimination": "Élimination Simple",
+      "double_elimination": "Élimination Double",
+      "round_robin": "Round Robin",
+      "swiss": "Swiss"
+    }
+  },
+  "war": {
+    "challenge": {
+      "select_title": "⚔️ Sélectionner une Équipe Rivale",
+      "select_description": "Tapez le nom de l'équipe que vous voulez défier :",
+      "available_teams": "Équipes Disponibles",
+      "none": "Aucune",
+      "sent_title": "⚔️ Défi Envoyé",
+      "sent_description": "Vous avez défié **{team}** à une Guerre d'Équipe ({type}).",
+      "challenged_title": "⚔️ Guerre d'Équipe Défiée",
+      "challenged_description": "**{team}** a défié votre équipe **{your_team}** à une Guerre d'Équipe !",
+      "challenging_team": "Équipe Défiante",
+      "your_team": "Votre Équipe",
+      "war_type": "Type de Guerre"
+    },
+    "select_players": {
+      "title": "⚔️ Sélectionner la Composition",
+      "description": "Sélectionnez les 5 joueurs de votre équipe **{name}** pour la Guerre d'Équipe :\n\n⚠️ **OBLIGATOIRE** : Vous devez sélectionner exactement 5 joueurs.",
+      "available_members": "Membres Disponibles"
+    },
+    "status": {
+      "title": "⚔️ État de la Guerre : {team1} vs {team2}",
+      "type": "Type",
+      "team1": "Équipe 1",
+      "team2": "Équipe 2",
+      "victories": "victoires",
+      "matches": "Parties",
+      "not_created": "Les parties n'ont pas encore été créées"
+    },
+    "report": {
+      "title": "⚔️ Signaler les Résultats",
+      "description": "Signalez les résultats des parties de la Guerre d'Équipe :\n**{team1}** vs **{team2}**",
+      "pending": "Parties en Attente",
+      "all_confirmed": "Toutes confirmées"
+    },
+    "accepted": {
+      "title": "✅ Guerre Acceptée",
+      "description": "Vous avez accepté la Guerre d'Équipe contre **{team}**.\n\n⚠️ **OBLIGATOIRE** : Les deux leaders doivent sélectionner leurs 5 joueurs en utilisant `/war select-players`."
+    },
+    "rejected": {
+      "message": "❌ Vous avez rejeté la Guerre d'Équipe."
+    },
+    "players_selected": {
+      "title": "✅ Composition Sélectionnée",
+      "description": "Vous avez sélectionné les 5 joueurs pour la Guerre d'Équipe.",
+      "selected": "Joueurs Sélectionnés",
+      "started": "⚔️",
+      "started_value": "La Guerre d'Équipe a commencé ! Utilisez `/war report-results` pour signaler les résultats.",
+      "waiting": "⏳",
+      "waiting_value": "En attente que l'autre équipe sélectionne ses joueurs..."
+    },
+    "match_result": {
+      "reported_title": "📊 Résultat Signalé",
+      "reported_description": "Partie #{number} : **{player1}** {score1} - {score2} **{player2}**",
+      "reported_footer": "{opponent}, confirmez ce résultat",
+      "reported_message": "✅ Résultat signalé. En attente de confirmation de {opponent}...",
+      "confirmed_title": "✅ Partie Confirmée",
+      "confirmed_description": "Partie #{number} confirmée : **{player1}** {score1}-{score2} **{player2}**",
+      "elo_gained": "ELO Gagné",
+      "war_score": "Score de la Guerre",
+      "winner": "🏆 Vainqueur",
+      "winner_value": "**{team}** remporte la Guerre d'Équipe !",
+      "draw": "🤝 Égalité",
+      "draw_value": "La guerre s'est terminée par une égalité !",
+      "rejected": "❌ Vous avez rejeté le résultat. L'autre joueur peut le signaler à nouveau."
+    },
+    "errors": {
+      "only_leader_accept": "❌ Seul le leader de l'équipe peut accepter cette guerre.",
+      "not_pending": "❌ Cette guerre n'est plus en attente.",
+      "team_not_found": "❌ Erreur : Équipe non trouvée.",
+      "only_leader_reject": "❌ Seul le leader de l'équipe peut rejeter cette guerre.",
+      "not_exists": "❌ Cette guerre n'existe plus.",
+      "match_not_found": "❌ Partie non trouvée.",
+      "already_confirmed": "❌ Cette partie a déjà été confirmée.",
+      "war_not_found": "❌ Guerre non trouvée.",
+      "player_not_found": "❌ Joueur non trouvé.",
+      "not_participating": "❌ Vous ne participez pas à cette partie.",
+      "invalid_scores": "❌ Les scores doivent être des nombres.",
+      "only_opponent_confirm": "❌ Seul l'adversaire peut confirmer ce résultat.",
+      "not_pending_confirmation": "❌ Cette partie n'est plus en attente de confirmation.",
+      "only_opponent_reject": "❌ Seul l'adversaire peut rejeter ce résultat.",
+      "player_already_selected": "❌ Ce joueur a déjà été sélectionné.",
+      "max_players": "❌ Vous avez déjà sélectionné 5 joueurs."
+    },
+    "types": {
+      "friendly": "Amical",
+      "competition": "Compétition (Ligue)"
+    }
+  },
+  "profile": {
+    "no_profile": "{user} n'a pas de profil créé.",
+    "title": "👤 {name}",
+    "description": "Profil de {user}",
+    "rank": "🏆 Rang",
+    "level": "⭐ Niveau",
+    "stats": "📊 Statistiques",
+    "avg_goals": "⚽ Moyenne de Buts",
+    "scored": "Marqués",
+    "conceded": "Encaissés",
+    "streaks": "🔥 Séquences",
+    "current": "Actuel",
+    "best": "Meilleur",
+    "prestige": "⭐ Prestige",
+    "prestige_desc": "(ELO × TR) × √Matchs"
+  },
+  "leaderboard": {
+    "elo": "🏆 Classement par ELO",
+    "xp": "⭐ Classement par XP",
+    "wins": "✅ Classement par Victoires",
+    "winrate": "📊 Classement par Taux de Victoire",
+    "prestige": "⭐ Classement par Prestige",
+    "no_players": "Aucun joueur dans le classement.",
+    "page": "Page {page}",
+    "victories": "victoires",
+    "value_elo": "{rank} - {elo:.0f} ELO",
+    "value_xp": "Lv.{level} - {xp} XP",
+    "value_wins": "{wins} victoires",
+    "value_winrate": "{winrate:.1f}% ({wins}V/{losses}D)",
+    "value_prestige": "{prestige:.2f}",
+    "teams": {
+      "elo": "🏆 Classement des Équipes par ELO",
+      "no_teams": "Aucune équipe dans le classement.",
+      "only_elo": "❌ Les équipes ne peuvent afficher que le classement par ELO. Utilisez ELO pour voir le classement des équipes.",
+      "value_elo": "{rank} - {elo:.0f} ELO",
+      "members": "{count} membres"
+    }
+  },
+  "ranks": {
+    "title": "🏆 Système de Rangs - Inazuma Eleven VR",
+    "description": "Rangs disponibles et ELO nécessaire pour les atteindre",
+    "tier_start": "🌱 Début",
+    "tier_intermediate": "🥈🥇 Intermédiaire",
+    "tier_advanced": "💎💚 Avancé",
+    "tier_elite": "💠⭐🦁👑 Élite",
+    "footer": "Utilisez /profile pour voir votre rang actuel",
+    "rank_format": "{emoji} **{rank}**: {min_elo} - {max_elo} ELO",
+    "rank_format_plus": "{emoji} **{rank}**: {min_elo}+ ELO",
+    "names": {
+      "principiante": "Débutant",
+      "hierro_iii": "Fer III",
+      "hierro_ii": "Fer II",
+      "hierro_i": "Fer I",
+      "bronce_iii": "Bronze III",
+      "bronce_ii": "Bronze II",
+      "bronce_i": "Bronze I",
+      "plata_iii": "Argent III",
+      "plata_ii": "Argent II",
+      "plata_i": "Argent I",
+      "oro_iii": "Or III",
+      "oro_ii": "Or II",
+      "oro_i": "Or I",
+      "platino_iii": "Platine III",
+      "platino_ii": "Platine II",
+      "platino_i": "Platine I",
+      "esmeralda_iii": "Émeraude III",
+      "esmeralda_ii": "Émeraude II",
+      "esmeralda_i": "Émeraude I",
+      "diamante_iii": "Diamant III",
+      "diamante_ii": "Diamant II",
+      "diamante_i": "Diamant I",
+      "promesa": "Promesse",
+      "predator": "Prédateur",
+      "leyenda": "Légende"
+    }
+  },
+  "help": {
+    "title": "📚 Commandes Disponibles - Inazuma Eleven VR Bot",
+    "description": "Liste complète des commandes organisées par catégories",
+    "profile_stats": {
+      "name": "👤 Profil et Statistiques",
+      "value": "`/profile [utilisateur]` - Affiche votre profil ou celui d'un autre joueur\n`/leaderboard [catégorie] [type]` - Affiche le classement :\n  • Joueurs : ELO, XP, Victoires, Taux de Victoire\n  • Équipes : ELO\n`/ranks` - Affiche toutes les ligues et l'ELO nécessaire pour les atteindre"
+    },
+    "matches": {
+      "name": "⚔️ Parties",
+      "value": "`/matchmaking` - Recherche une partie 1v1 de manière anonyme\n`/cancel-matchmaking` - Annule toutes vos recherches actives\n`/score [adversaire] [score1] [score2]` - Signale le résultat d'une partie"
+    },
+    "teams": {
+      "name": "👥 Équipes",
+      "value": "`/team-create [nom] [tag] [logo]` - Crée une équipe professionnelle\n`/team [action]` - Gestion d'équipe :\n  • `info` - Voir les informations de l'équipe\n  • `members` - Voir les membres de l'équipe\n  • `invite [membre]` - Inviter un joueur\n  • `leave` - Quitter l'équipe\n  • `kick [membre]` - Expulser un membre\n  • `set-role [membre] [rôle]` - Changer le rôle d'un membre\n  • `disband` - Dissoudre l'équipe (leader uniquement)"
+    },
+    "wars": {
+      "name": "⚔️ Guerres d'Équipe (Interclan)",
+      "value": "`/war [action]` - Commandes de Guerre d'Équipe :\n  • `challenge [équipe] [type]` - Défier une autre équipe (leader uniquement)\n    - Type : Amical (50% ELO) ou Compétition (150% ELO)\n  • `select-players` - Sélectionner la composition de 5 joueurs (leader uniquement)\n  • `status` - Voir l'état de la guerre actuelle\n  • `report-results` - Signaler les résultats des 5 parties"
+    },
+    "tournaments": {
+      "name": "🏆 Tournois",
+      "value": "`/tournament [action]` - Gestion de tournois sur Challonge :\n  • `create [nom] [url] [type]` - Créer un nouveau tournoi\n  • `list` - Lister tous les tournois créés\n  • `join [id]` - S'inscrire à un tournoi\n  • `participants [id]` - Voir les participants d'un tournoi\n  • `matches [id]` - Voir les matchs d'un tournoi\n  • `start [id]` - Démarrer un tournoi\n  • `status [id]` - Voir l'état détaillé d'un tournoi\n  • `bracket [id]` - Voir le lien du bracket du tournoi\n  • `delete [id]` - Supprimer un tournoi (administrateurs uniquement)"
+    },
+    "admin": {
+      "name": "⚙️ Administration",
+      "value": "`/sync` - Synchronise les commandes du bot (administrateurs uniquement)\n`/server-id` - Affiche l'ID du serveur actuel (administrateurs uniquement)\n`/language [langue]` - Change la langue du bot (Español, English, Français)"
+    },
+    "info": {
+      "name": "💡 Informations",
+      "value": "• Les commandes avec `[paramètre]` sont optionnelles\n• Les commandes avec `(leader uniquement)` nécessitent d'être leader de l'équipe\n• Les commandes avec `(administrateurs uniquement)` nécessitent des permissions d'administrateur\n• Utilisez `/help` pour voir cette liste à nouveau"
+    },
+    "footer": "Inazuma Eleven VR Bot - Système compétitif"
+  },
+  "language": {
+    "title": "🌐 Langue Changée",
+    "description": "Votre langue a été changée en **{language}**",
+    "current": "Langue actuelle : **{language}**",
+    "footer": "Tous les messages du bot apparaîtront maintenant en {language}",
+    "errors": {
+      "invalid": "❌ Langue non valide. Langues disponibles : Español, English, Français"
+    }
+  },
+  "admin": {
+    "sync": {
+      "no_permission": "❌ Seuls les administrateurs peuvent utiliser cette commande.",
+      "global_synced": "✅ Synchronisé {count} commandes globalement.\n⚠️ Cela peut prendre jusqu'à 1 heure pour apparaître sur tous les serveurs.",
+      "guild_synced": "✅ Synchronisé {count} commandes pour ce serveur.\nLes commandes devraient apparaître immédiatement.",
+      "global_cleared": "\n⚠️ Commandes globales effacées.",
+      "error": "❌ Erreur lors de la synchronisation des commandes : {error}"
+    },
+    "server_id": {
+      "message": "🆔 ID du serveur : `{id}`\n\nPour synchroniser les commandes plus rapidement, ajoutez ceci à votre fichier `.env` :\n```\nDISCORD_GUILD_ID={id}\n```\nPuis redémarrez le bot."
+    }
+  },
+  "team_war": {
+    "challenge": {
+      "not_in_team": "❌ Vous devez être dans une équipe pour défier une autre. Utilisez `/team-create` pour en créer une.",
+      "not_leader": "❌ Seul le **leader de l'équipe** peut défier d'autres équipes.",
+      "not_enough_members": "❌ Votre équipe a besoin d'au moins 5 membres pour démarrer une Guerre d'Équipe. Vous en avez actuellement {count}/50.",
+      "war_pending": "❌ Votre équipe a déjà une Guerre d'Équipe en cours ou en attente.",
+      "no_teams_available": "❌ Aucune équipe disponible pour défier (elles doivent avoir au moins 5 membres).",
+      "select_team_title": "⚔️ Sélectionner une Équipe Rivale",
+      "select_team_description": "Tapez le nom de l'équipe que vous voulez défier :",
+      "teams_available": "Équipes Disponibles",
+      "footer": "Utilisez /war challenge team_name:NomDeLEquipe pour défier",
+      "team_not_found": "❌ L'équipe **{name}** n'a pas été trouvée.",
+      "cannot_challenge_self": "❌ Vous ne pouvez pas défier votre propre équipe.",
+      "rival_not_enough_members": "❌ L'équipe **{name}** a besoin d'au moins 5 membres pour accepter une Guerre d'Équipe (actuellement {count}/50).",
+      "rival_war_pending": "❌ L'équipe **{name}** a déjà une Guerre d'Équipe en cours.",
+      "challenge_sent_title": "⚔️ Défi Envoyé",
+      "challenge_sent_description": "Vous avez défié **{name}** à une Guerre d'Équipe ({type}).",
+      "challenge_received_title": "⚔️ Guerre d'Équipe Défiée",
+      "challenge_received_description": "**{challenger}** a défié votre équipe **{team}** à une Guerre d'Équipe !",
+      "challenging_team": "Équipe Défiante",
+      "your_team": "Votre Équipe",
+      "war_type": "Type de Guerre",
+      "challenge_footer": "Seul le leader peut accepter ou rejeter"
+    },
+    "select_players": {
+      "not_in_team": "❌ Vous devez être dans une équipe.",
+      "not_leader": "❌ Seul le **leader de l'équipe** peut sélectionner les joueurs.",
+      "no_war": "❌ Il n'y a pas de Guerre d'Équipe acceptée où votre équipe participe. Vous devez attendre que l'autre leader accepte le défi.",
+      "already_selected": "❌ Vous avez déjà sélectionné les 5 joueurs pour cette guerre.",
+      "not_enough_members": "❌ Votre équipe a besoin d'au moins 5 membres pour démarrer une Guerre d'Équipe. Vous en avez actuellement {count}/50.",
+      "title": "⚔️ Sélectionner l'Alignement",
+      "description": "Sélectionnez les 5 joueurs de votre équipe **{name}** pour la Guerre d'Équipe :\n\n⚠️ **OBLIGATOIRE** : Vous devez sélectionner exactement 5 joueurs.",
+      "available_members": "Membres Disponibles",
+      "footer": "Sélectionnez 5 joueurs en utilisant les menus déroulants",
+      "player_already_selected": "❌ Ce joueur a déjà été sélectionné.",
+      "already_5_selected": "❌ Vous avez déjà sélectionné 5 joueurs.",
+      "player_selected": "✅ {name} sélectionné ({current}/5).",
+      "selection_complete_title": "✅ Alignement Sélectionné",
+      "selection_complete_description": "Vous avez sélectionné les 5 joueurs pour la Guerre d'Équipe.",
+      "selected_players": "Joueurs Sélectionnés",
+      "war_started": "⚔️ La Guerre d'Équipe a commencé ! Utilisez `/war report-results` pour rapporter les résultats.",
+      "waiting_other_team": "⏳ En attente que l'autre équipe sélectionne ses joueurs..."
+    },
+    "status": {
+      "not_in_team": "❌ Vous devez être dans une équipe.",
+      "no_war": "❌ Votre équipe n'a pas de Guerre d'Équipe active.",
+      "title": "⚔️ État de la Guerre : {team1} vs {team2}",
+      "type": "Type",
+      "team1": "Équipe 1",
+      "team2": "Équipe 2",
+      "victories": "victoires",
+      "matches": "Matchs",
+      "match_confirmed": "✅ Match {number} : {p1} {score1}-{score2} {p2}",
+      "match_reported": "⏳ Match {number} : {p1} vs {p2} (En attente de confirmation)",
+      "match_pending": "⏸️ Match {number} : {p1} vs {p2} (En attente)",
+      "no_matches": "Les matchs n'ont pas encore été créés"
+    },
+    "report_results": {
+      "not_in_team": "❌ Vous devez être dans une équipe.",
+      "no_war": "❌ Votre équipe n'a pas de Guerre d'Équipe en cours.",
+      "all_confirmed": "❌ Tous les matchs de cette guerre ont déjà été confirmés.",
+      "title": "⚔️ Rapporter les Résultats",
+      "description": "Rapportez les résultats des matchs de la Guerre d'Équipe :\n**{team1}** vs **{team2}**",
+      "pending_matches": "Matchs en Attente",
+      "match_info": "Match {number} : {p1} vs {p2} - {status}",
+      "status_confirmed": "✅ Confirmé",
+      "status_pending": "⏳ En attente",
+      "footer": "Sélectionnez un match pour rapporter son résultat"
+    },
+    "accept": {
+      "not_leader": "❌ Seul le leader de l'équipe peut accepter cette guerre.",
+      "not_pending": "❌ Cette guerre n'est plus en attente.",
+      "team_not_found": "❌ Erreur : Équipe non trouvée.",
+      "title": "✅ Guerre Acceptée",
+      "description": "Vous avez accepté la Guerre d'Équipe contre **{team}**.\n\n⚠️ **OBLIGATOIRE** : Les deux leaders doivent sélectionner leurs 5 joueurs en utilisant `/war select-players`.",
+      "rejected": "❌ Vous avez rejeté la Guerre d'Équipe."
+    },
+    "report_modal": {
+      "title": "Rapporter le Résultat",
+      "score1_label": "Score Équipe 1",
+      "score1_placeholder": "Ex : 3",
+      "score2_label": "Score Équipe 2",
+      "score2_placeholder": "Ex : 2",
+      "invalid_scores": "❌ Les scores doivent être des nombres.",
+      "match_not_found": "❌ Match non trouvé.",
+      "war_not_found": "❌ Guerre non trouvée.",
+      "player_not_found": "❌ Joueur non trouvé.",
+      "not_participant": "❌ Vous ne participez pas à ce match.",
+      "reported_title": "📊 Résultat Rapporté",
+      "reported_description": "Match #{number} : **{p1}** {score1} - {score2} **{p2}**",
+      "reported_footer": "{opponent}, confirmez ce résultat",
+      "reported_success": "✅ Résultat rapporté. En attente de confirmation de {opponent}..."
+    },
+    "confirm_result": {
+      "not_opponent": "❌ Seul l'adversaire peut confirmer ce résultat.",
+      "not_reported": "❌ Ce match n'est plus en attente de confirmation.",
+      "war_not_found": "❌ Guerre non trouvée.",
+      "title": "✅ Match Confirmé",
+      "description": "Match #{number} confirmé : **{p1}** {score1}-{score2} **{p2}**",
+      "elo_gained": "ELO Gagné",
+      "elo_format": "{p1} : {change1} | {p2} : {change2}",
+      "war_score": "Score de la Guerre",
+      "war_score_format": "{team1} : {score1} - {score2} :{team2}",
+      "winner": "🏆 Gagnant",
+      "winner_value": "**{team}** gagne la Guerre d'Équipe !",
+      "draw": "🤝 Égalité",
+      "draw_value": "La guerre s'est terminée par un match nul !",
+      "reject_not_opponent": "❌ Seul l'adversaire peut rejeter ce résultat.",
+      "rejected": "❌ Vous avez rejeté le résultat. L'autre joueur peut le rapporter à nouveau."
+    },
+    "types": {
+      "amistoso": "Amical",
+      "competicion": "Compétition (Ligue)"
+    }
+  },
+  "errors": {
+    "generic": "❌ Une erreur s'est produite : {error}",
+    "unknown": "❌ Une erreur inattendue s'est produite"
+  }
+}
+
